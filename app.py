@@ -1,28 +1,25 @@
-from flask import Flask, request, jsonify
-import RPi.GPIO as GPIO
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
-# Setup GPIO
-LED_PIN = 2  # GPIO pin where the LED is connected
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(LED_PIN, GPIO.OUT)
+# Route to serve the HTML page
+@app.route('/')
+def index():
+    return render_template('index.html')
 
+# Endpoint to control the LED
 @app.route('/led', methods=['POST'])
 def control_led():
-    data = request.json
-    action = data.get('action')
+    action = request.json.get('action')
+    # Logic to control the LED (this will interact with your ESP32)
     if action == 'on':
-        GPIO.output(LED_PIN, GPIO.HIGH)
-        return jsonify({'status': 'LED is ON'})
+        # Turn LED on
+        pass
     elif action == 'off':
-        GPIO.output(LED_PIN, GPIO.LOW)
-        return jsonify({'status': 'LED is OFF'})
-    else:
-        return jsonify({'error': 'Invalid action'}), 400
+        # Turn LED off
+        pass
+    return jsonify({'status': f'LED is {action.upper()}'})
 
 if __name__ == '__main__':
-    try:
-        app.run(host='0.0.0.0', port=5000)
-    finally:
-        GPIO.cleanup()
+    app.run(debug=True)
+
