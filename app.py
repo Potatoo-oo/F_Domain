@@ -17,6 +17,7 @@ def control_led():
     global led_status  # Use global variable to track LED status
     print(f"Received a POST request: {request.json}")  # Log the incoming request
     action = request.json.get('action')
+    print(f"Action received: {action}")  # Log the action received
 
     if action == 'on':
         led_status = 'on'  # Update LED status to 'on'
