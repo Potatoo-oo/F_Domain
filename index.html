@@ -18,6 +18,7 @@
                 console.log(data);
                 // Optionally, update the page or show feedback
                 alert(`Server response: ${data.status}`);
+                document.getElementById("status").innerText = `LED is ${data.status}`;
             })
             .catch(error => console.error('Error:', error));
         }
@@ -27,5 +28,6 @@
     <h1>LED Control</h1>
     <button onclick="sendAction('on')">Turn On LED</button>
     <button onclick="sendAction('off')">Turn Off LED</button>
+    <p id="status">LED is OFF</p> <!-- Status display -->
 </body>
 </html>
