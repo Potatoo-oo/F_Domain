@@ -6,7 +6,7 @@
     <title>LED Control</title>
     <script>
         function sendAction(action) {
-            fetch('https://f-domain.onrender.com', {  // Replace with your Render URL
+            fetch('https://f-domain.onrender.com/led', {  // Update to point to the /led endpoint
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -14,7 +14,11 @@
                 body: JSON.stringify({ action: action })
             })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data);
+                // Optionally, update the page or show feedback
+                alert(`Server response: ${data.status}`);
+            })
             .catch(error => console.error('Error:', error));
         }
     </script>
