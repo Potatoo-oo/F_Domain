@@ -9,6 +9,7 @@ led_status = 'off'  # Default LED status
 # Route to serve the HTML page
 @app.route('/')
 def index():
+    print("index successful")
     return render_template('index.html')
 
 # Endpoint to control the LED
