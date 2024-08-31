@@ -17,7 +17,6 @@
             .then(data => {
                 console.log(data);
                 // Optionally, update the page or show feedback
-                alert(`Server response: ${data.status}`);
                 document.getElementById("status").innerText = `LED is ${data.status}`;
             })
             .catch(error => console.error('Error:', error));
