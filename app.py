@@ -23,11 +23,13 @@ def control_led():
         led_status = 'on'  # Update LED status to 'on'
         # Logic to turn LED on (if applicable to your setup)
         # For example, you might send a signal to the ESP32 here
+        return jsonify({'status': 'on'})
 
     elif action == 'off':
         led_status = 'off'  # Update LED status to 'off'
         # Logic to turn LED off (if applicable to your setup)
         # For example, you might send a signal to the ESP32 here
+        return jsonify({'status': 'off'})
 
     elif action == 'get_status':
         # Return the current status of the LED
