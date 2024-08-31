@@ -6,7 +6,7 @@
     <title>LED Control</title>
     <script>
         function sendAction(action) {
-            fetch('https://f-domain.onrender.com/led', {  // Update to point to the /led endpoint
+            fetch('https://f-domain.onrender.com', {  // Update to point to the /led endpoint
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
