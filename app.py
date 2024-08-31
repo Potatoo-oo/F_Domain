@@ -15,6 +15,7 @@ def index():
 @app.route('/led', methods=['POST'])
 def control_led():
     global led_status  # Use global variable to track LED status
+    print(f"Received a POST request: {request.json}")  # Log the incoming request
     action = request.json.get('action')
 
     if action == 'on':
